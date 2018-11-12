@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tio João PCs</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Diplomata+SC" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>Tio João PCs</h1>
+      <ul>
+        <li id="stats">Estatísticas</li><li id="conqs">Conquistas</li><li id="save">Salvar</li><li id="reset">Reiniciar</li><li id="sobre">Sobre</li>
+      </ul>
+    </header>
+    <main>
+      <div id="clicker">
+        <div id="spinnerContainer">
+          <img src="aleatoriedades/spinner.png" id="spinner" class="oculto">
+          <img id="fogo" class="oculto" src="aleatoriedades/fogo.gif">
+        </div>
+        <button id="tormenta" class="oculto">Ativar a <em>Tormenta do Spinner</em></button>
+        <figure id="div-pc">
+          <img id='pc' src="pc-velho.png">
+        </figure>
+        <div id="dinheiros">
+          <p>Tijão tem atualmente <span id='dinheiro'>0.00</span> contos na conta</p>
+          <img src="dinheiro.png"><img src="dinheiro.png"><img src="dinheiro.png"><img src="dinheiro.png">
+        </div>
+      </div>
+      <div id="central">
+        <ul id="menu">
+          <li data-mostra="upgrades">Upgrades</li>
+          <li data-mostra="aleatoriedades">Aleatoriedades</li>
+          <li class="atual" data-mostra="pecas">Peças</li>
+          <li data-mostra="progs" class="oculto">Programadores</li>
+          <li data-mostra="portu" class="oculto">Portugol</li>
+        </ul>
+        <section class="visivel abaDeProdutos" id="pecas">
+          <ul class="std-list">
+            <li data-add="0.01" data-custo='0.10' data-qtdpopup="10" data-indicepopup="0" id="ra">1MB de memória Rã adicional</li>
+            <li data-add='1' data-custo='18' id="gtx">GTX-1080 da enevíds</li>
+            <li data-add='300' data-custo='20000'>I7 dual-core da intéu</li>
+          </ul>
+        </section>
+        <section class="abaDeProdutos" id="aleatoriedades">
+          <ul class="std-list" data-diferente="aleat">
+            <li data-desc="???????????" data-custo="1000000">????????????</li>
+          </ul>
+        </section>
+        <section class="abaDeProdutos" id="upgrades">
+          <ul class="std-list" data-diferente="up">
+            <li data-custo="8000" data-desc="Suas rãs são 10x mais turbinadas.">Rãs DDR4</li>
+            <li data-custo='75000' data-desc="Multiplica por 5 o lucro produzido pelos programadores de HTML.">Curso de CSS</li>
+            <li data-custo="3500000" data-desc="95% menos inflação nas GTX 1080!">Compra em Massa</li>
+            <li data-custo='10000000' data-desc="Cada programador seu aumenta o lucro de seu tipo de programador em 0.07%.">Trabalho em Equipe</li>
+            <li data-custo='50000000000' data-desc="Converta todos os seus programadores em programadores de Portugol!" class="portugol"><img src="portu.png" alt="Portugol" style="width:2em; vertical-align:middle"></li>
+          </ul>
+        </section>
+        <section class="abaDeProdutos" id="progs">
+          <!--img src="portu.png" width="50" id="portu"-->
+          <ul class="std-list" data-autoclick>
+            <li data-add="0.2" data-custo="5" id="html">"Programador" de HTML</li>
+            <li data-add='30' data-custo='2600'>Programador de C</li>
+            <li data-add='500' data-custo='34500'>Programador de JavaScript</li>
+            <li data-add='12500' data-custo='450000' id="special" class="special portugol" data-qtdpopup="1" data-indicepopup="1">
+              Programador de Portugol
+              <span class="seta" id="seta1">
+                <span class="medio"></span>
+              </span>
+              <span class="seta" id="seta2">
+                <span class="medio"></span>
+              </span>
+            </li>
+          </ul>
+        </section>
+        <section class="abaDeProdutos" id="portu">
+          <ul class="std-list"></ul>
+        </section>
+        <div id="comprarMts">
+          <div>Compras por clique: <span id="num">1</span></div>
+          <input type="range" value="1" min="1" max="31.63" step="0.01" id="qtosComprar">
+        </div>
+      </div>
+    </main>
+    <div id="unlockPopup" class="pseudoOculto fundoPop">
+      <div class="caxaPop ultimoMargem0 sans">
+        <section class="oculto" data-mostra="progs">
+          <h2>Aba "Programadores" desbloqueada!</h2>
+          <p>Parabéns, seu pecê agora tem memória rã suficiente para ligar! Você agora pode contratar programadores para usá-lo.</p>
+        </section>
+        <section class="oculto" data-mostra="portu">
+          <h2>Aba "Portugol" desbloqueada!!!!!</h2>
+          <p>Você poderá usufruir dessa ótima ferramenta didática para programadores iniciantes! Mas você vê imenso potencial nela, quem sabe pode se tornar algo ainda maior?</p>
+        </section>
+        <div class="btn1 right">
+          <button class="jsfechar">OK</button>
+        </div>
+      </div>
+    </div>
+    <div class="fundoPop pseudoOculto" id="sobrePop">
+      <div class="caxaPop sans ultimoMargem0Filhos">
+        <button class="fechar jsfechar">×</button>
+        <h2>Desenvolvedores</h2>
+        <table class="textTable">
+          <tbody>
+            <tr>
+              <th>Pedrinho</th>
+              <td>
+                <ul>
+                  <li>HTML e CSS</li>
+                  <li>Ajudou no JavaScript</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Fitz</th>
+              <td>
+                <ul>
+                  <li>Ajudou no JavaScript</li>
+                  <li>Animação das setinhas</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Pedro Augusto</th>
+              <td>
+                <ul>
+                  <li>Ajudou no JavaScript</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Marcus</th>
+              <td>
+                <ul>
+                  <li>Muito ocupado com a maratona dos 1000 reais (nós entendemos)</li>
+                  <li>Ideia do projeto</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Agradecimentos</h2>
+        <table class="textTable">
+          <tbody>
+            <tr>
+              <th>
+                <img src="https://miro.medium.com/max/1400/1*y48w0QXSXaByvUuQTNloQQ.png" alt="Stack Overflow" width="200">
+              </th>
+              <td>50% do código foi copiado de lá</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Patrocinadores</h2>
+        <table class="textTable">
+          <tbody>
+            <tr>
+              <th>
+                Portugol Studio<img src="portu.png" alt="Stack Overflow" width="32">
+              </th>
+              <td>
+                <p>Ótima ferramenta didática para estudantes de programação! Tudo cuidadosamente traduzido para português, para aumentar a acessibilidade! Bibliotecas poderosas que permitem até obter caracteres de uma cadeia!</p>
+                <p id="promo"><em>Promoção!</em> Baixe e ganhe <u>100 CONTOS</u> por tempo limitado! <span style="font-size:1.1em; font-family:cursive; line-height:0.909em; vertical-align:middle">CORRA</span>🏃🏃🏃, você tem: <span id="strongsVermelhos"><strong>(<span class="ptt">05</span>)</strong> minutos <strong>(<span class="ptt">00</span>)</strong> segundos <strong>(<span class="ptt">000</span>)</strong> centésimos</span></p>
+                <div class="btn1 center">
+                  <a href="https://github.com/UNIVALI-LITE/Portugol-Studio/releases/download/v2.6.9/portugol-studio-2.6.9-windows.exe" target="_blank" id="clickme">CLIQUE GRÁTIS BAIXAR PORTUGOL AGORA</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="fundoPop pseudoOculto" id="conqsPop">
+      <div class="caxaPop sans ultimoMargem0Filhos">
+        <button class="fechar jsfechar">×</button>
+        <h2>Conquistas</h2>
+        <p id="numConqs"><strong><span></span>/<span></span> desbloqueadas.</strong></p>
+        <ul id="listaConqs"></ul>
+      </div>
+    </div>
+    <div class="fundoPop pseudoOculto" id="resetPop">
+      <div class="caxaPop sans ultimoMargem0Filhos">
+        <h2>Confirmação</h2>
+        <p>Você clicou nesse botão sem querer?</p>
+        <div class="btn1">
+          <button class="jsfechar" id="resetaDeVerdade">Não</button>
+          <button class="jsfechar">Não... Quer dizer, sim!</button>
+        </div>
+      </div>
+    </div>
+    <div class="fundoPop pseudoOculto" id="statPop">
+      <div class="caxaPop sans ultimoMargem0Filhos">
+        <button class="fechar jsfechar">×</button>
+        <h2>Estatísticas</h2>
+        <table class="textTable">
+          <tbody>
+            <tr>
+              <th>Tempo de jogo</th>
+              <td>
+                <p id="tempoJogo"></p>
+                <p class="esmaecido">Esse tempo não inclui períodos em que o jogo estava pausado por qualquer motivo.</p>
+              </td>
+            </tr>
+            <tr>
+              <th>Dinheiro gasto</th>
+              <td id="dinGasto"></td>
+            </tr>
+            <tr>
+              <th>Clicks dados</th>
+              <td><span id="clicksDados"></span> (Média: <span id="clicksPS"></span>/s)</td>
+            </tr>
+            <tr>
+              <th>Detalhes<br>dos itens</th>
+              <td>
+                <table class="dataTable">
+                  <thead>
+                    <tr>
+                      <th><div>Item <button class="sorter" data-padrao="1" data-orient="0"></button></div></th>
+                      <th><div>Receita total <button class="sorter" data-padrao="-1" data-orient="0"></button></div></th>
+                      <th><div>Tempo para um<br>novo gerar lucro <button class="sorter" data-padrao="1" data-orient="0"></button></div></th>
+                    </tr>
+                  </thead>
+                  <tbody id="statTable"><!--Essa tabela será gerada com JS--></tbody>
+                </table>
+                <p class="esmaecido">Valores em segundos de objetos que geram dinheiro com cliques são baseados na sua média de cliques por segundo.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="jquery-3.3.1.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
