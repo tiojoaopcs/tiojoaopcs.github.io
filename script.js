@@ -18,6 +18,55 @@ let dinGasto,tempo,clicksDados; /* Variáveis que guardam o tempo de jogo e todo
 let clicksPS;
 let nAtivouCronometro=true;
 
+// CONTROLAR OS PCS DIFERENTES
+let pcAtual = 0;
+const pcs = [
+  {
+    nome:"pc-pedra.png",
+    qtd:0,
+  },
+  {
+    nome:"pc-velho.png",
+    qtd:1
+  },
+  {
+    nome:"pc-negativo.png",
+    qtd:120
+  },
+  {
+    nome:"pc-xuxa.png",
+    qtd:500
+  },
+  {
+    nome:"pc-torradeira.png",
+    qtd:1200
+  },
+  {
+    nome:"pc-calculadora.png",
+    qtd:2000
+  },
+  {
+    nome:"pc-command.png",
+    qtd:6000
+  },
+  {
+    nome:"pc-gamer.png",
+    qtd:15000
+  },
+  {
+    nome:"pc-super.png",
+    qtd:45000
+  },
+  {
+    nome:"pc-ultra.gif",
+    qtd:100000
+  }
+]
+botaoPc.attr('src', pcs[pcAtual].nome)
+
+function mudaSrc(src){
+  botaoPc.attr('src', src)
+}
 
 // Pegar custo inicial
 
@@ -216,6 +265,42 @@ let conqs=[
       nom:"Preguiçoso...",
       dsc:"Fique 5 minutos sem clicar"
     },
+    {
+      nom:"O PC ancestral",
+      dsc:"Evolua para o PC antigão"
+    },
+    {
+      nom:"Negativo!",
+      dsc:"Evolua para o PC da Negativo™"
+    },
+    {
+      nom:"Vamos jogar!",
+      dsc:"Evolua para o PC da Xuxa"
+    },
+    {
+      nom:"Torradas saindo!",
+      dsc:"Evolua para a torradeira"
+    },
+    {
+      nom:"Matemático!",
+      dsc:"Evolua para a calculadora"
+    },
+    {
+      nom:"Sério?",
+      dsc:"Evolua para o Command Block"
+    },
+    {
+      nom:"Gamer Nutella",
+      dsc:"Evolua para o PC gamer"
+    },
+    {
+      nom:"NaSista",
+      dsc:"Evolua para o PC da NASA"
+    },
+    {
+      nom:"O limite da computação",
+      dsc:"Alcance o pináculo da evolução tecnológica com seu Ultra PC"
+    },
   ]
 ];
 
@@ -370,6 +455,25 @@ function Add(obj){
   obj.contribLucro+=aumentoDoLucro;
   obj.comprados+=Number(qtdCompra);
 
+  if(pcAtual<pcs.length - 2 && (function () {
+    let num=0;
+    for(let i=0; i<3; i++){
+      num+=upgrades[i].comprados;
+    }
+    return num;
+  }())>=pcs[pcAtual+1].qtd){
+    abrePopop(pcAtual + 2)
+    achievementUnlock(conqs[1][pcAtual + 4])
+    pcAtual++
+    mudaSrc(pcs[pcAtual].nome)
+  }
+  if(pcAtual == 8 && upgrades[6].comprados > 9999){
+    abrePopop(pcAtual + 2)
+    achievementUnlock(conqs[1][pcAtual + 4])
+    pcAtual++
+    mudaSrc(pcs[pcAtual].nome)
+  }
+
   //conquistas
   if (upgrades[0].comprados >= 10000 && upgrades[1].comprados >= 2000 && upgrades[2].comprados >= 30)
     achievementUnlock(conqs[0][2]);
@@ -463,7 +567,7 @@ botaoPc.click(function(e){
   posicionaNumerinho(x,e.pageX-x.offsetWidth/2,e.pageY-x.offsetHeight/2);
 });
 
-comPopop.click(function(e){ /* Se a quantidade do produto for maior que seu atributo "qtdpopup", abre seu popup e desbloqueia uma
+comPopop.click(function(e){ /* Se a quantidade do produto for maior que seu atributo "qtd", abre seu popup e desbloqueia uma
 nova aba */
   const data=this.dataset;
   if(this.disponivel && this.comprados>=Number(data.qtdpopup)){
